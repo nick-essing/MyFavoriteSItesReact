@@ -5,53 +5,51 @@ import { Button } from 'chayns-components';
 export default class Formular extends React.Component {
     constructor() {
         super();
-        this.myNameValue = '';
-        this.myUrlValue = '';
-        this.myFacebookValue = '';
-        this.myAdressValue = '';
-        this.myLocationValue = '';
+
+        this.state = {
+            name: '',
+            url: '',
+            facebook: '',
+            adress: '',
+            location: ''
+        };
     }
     render(){
         return(
             <div className= "content__card" style={{marginTop: 15 + 'px'}}>
                 <h2>Du willst eine Site für deine Firma hinzufügen ?</h2>
                 <p>geb hier die Daten deiner Site und deines Unternehmens an</p>
-                <Input id= "myName" placeholder="Name *" style={{width: 100 + '%'}}responsive
-                onChange={(value)=>{
-                    this.myNameValue = value;
+                <Input value={this.state.name} placeholder="Name *" style={{width: 100 + '%'}}responsive
+                    onChange={(value)=>{
+                    this.setState({name: value})
                 }}/>
-                <Input id="myUrl" placeholder="Url *" style={{width: 100 + '%'}}responsive
-                onChange={(value)=>{
-                    this.myUrlValue = value;
+                <Input value={this.state.url}placeholder="Url *" style={{width: 100 + '%'}}responsive
+                    onChange={(value)=>{
+                    this.setState({url: value})
                 }}/>
-                <Input id="myFacebook" placeholder="Facebook" style={{width: 100 + '%'}}responsive
+                <Input value={this.state.facebook}placeholder="Facebook" style={{width: 100 + '%'}}responsive
                 onChange={(value)=>{
-                    this.myFacebookValue = value;
+                    this.setState({facebook: value})
                 }}/>
-                <Input id="myAdress" placeholder="Straße/Hr." style={{width: 100 + '%'}}responsive
+                <Input value={this.state.adress}placeholder="Straße/Hr." style={{width: 100 + '%'}}responsive
                 onChange={(value)=>{
-                    this.myAdressValue = value;
+                    this.setState({adress: value})
                 }}/>
-                <Input id="myLocation" placeholder="PLZ/Ort" style={{width: 100 + '%'}}responsive
+                <Input value={this.state.location}placeholder="PLZ/Ort" style={{width: 100 + '%'}}responsive
                 onChange={(value)=>{
-                    this.myLocationValue = value;
+                    this.setState({location: value})
                 }}/>
                 <div style={{textAlign: 'center', marginTop: 10 +'px'}}>
                     <Button id= "sendNow" onClick={()=>{
-                         if (this.myNameValue !== '' && this.myUrlValue !== '') {
+                         if (this.state.name !== '' && this.state.url !== '') {
                             chayns.intercom.sendMessageToPage({  
-                                text:"Neue Site : "+ this.myNameValue +", "+ this.myUrlValue +", "+ this.myFacebookValue +", "+ this.myAdressValue +", "+ this.myLocationValue
+                                text:"Neue Site : "+ this.state.name +", "+ this.state.url +", "+ this.state.facebook +", "+ this.state.adress +", "+ this.state.location
                             });
-                            document.querySelector('#myName').value = '',
-                            document.querySelector('#myUrl').value = '',
-                            document.querySelector('#myFacebook').value = '',
-                            document.querySelector('#myAdress').value = '',
-                            document.querySelector('#myLocation').value = '',
-                            this.myNameValue = '',
-                            this.myUrlValue = '',
-                            this.myFacebookValue = '',
-                            this.myAdressValue = '',
-                            this.myLocationValue = ''
+                            this.setState({name: ''});
+                            this.setState({url: ''});
+                            this.setState({facebook: ''});
+                            this.setState({adress: ''});
+                            this.setState({location: ''});
 
                         } else {
                             chayns.dialog.alert('Fehler', 'Bitte fülle die Plichtfelder aus.');
