@@ -7,7 +7,7 @@ export default class Formular extends React.Component {
     }
     render(){
         return(
-            <div className= "content__card" style={{marginTop: + 15 + 'px'}}>
+            <div className= "content__card" style={{marginTop: 15 + 'px'}}>
                 <h2>Du willst eine Site für deine Firma hinzufügen ?</h2>
                 <p>geb hier die Daten deiner Site und deines Unternehmens an</p>
                 <div className="input-group">
@@ -30,7 +30,7 @@ export default class Formular extends React.Component {
                     <input className="input" id="myLocation" type="text" required></input>
                     <label id="city">PLZ/Ort</label>
                 </div>
-                <div style={{textAlign: 'center', marginTop: + 10 +'px'}}>
+                <div style={{textAlign: 'center', marginTop: 10 +'px'}}>
                     <button className="button" id= "sendNow">Site hinzufügen</button>
                 </div>
             </div>
