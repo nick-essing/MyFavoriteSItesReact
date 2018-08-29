@@ -1,5 +1,7 @@
 import React from 'react';
 import './SearchBar.scss'
+import { Input } from 'chayns-components';
+
 
 export default class SearchBar extends React.Component {
     constructor() {
@@ -9,8 +11,7 @@ export default class SearchBar extends React.Component {
     render(){
         return(
             <div className="Suche Suche--accordion">
-                <input id= "search" type="text" placeholder="Suche">
-                </input>
+                <Input id= "search" type="text" placeholder="Suche" />                
                 <label id="iconlabel">
                     <i className="fa fa-search"></i>
                 </label>

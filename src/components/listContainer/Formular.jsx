@@ -1,37 +1,63 @@
 import React from 'react';
+import { Input } from 'chayns-components';
+import { Button } from 'chayns-components';
 
 export default class Formular extends React.Component {
     constructor() {
         super();
-
+        this.myNameValue = '';
+        this.myUrlValue = '';
+        this.myFacebookValue = '';
+        this.myAdressValue = '';
+        this.myLocationValue = '';
     }
     render(){
         return(
             <div className= "content__card" style={{marginTop: 15 + 'px'}}>
                 <h2>Du willst eine Site für deine Firma hinzufügen ?</h2>
                 <p>geb hier die Daten deiner Site und deines Unternehmens an</p>
-                <div className="input-group">
-                    <input className="input" id= "myName" type="text" required></input>
-                    <label id="name">Name *</label>
-                </div>
-                <div className="input-group">
-                    <input className="input" id="myUrl"type="text" required></input>
-                    <label id="url">Url *</label>
-                </div>
-                <div className="input-group">
-                    <input className="input" id="myFacebook" type="text" required></input>
-                    <label id="facebooksite">Facebookseite</label>
-                </div>
-                <div className="input-group">
-                    <input className="input" id="myAdress" type="text" required></input>
-                    <label id="street">Straße/Hr.</label>
-                </div>
-                <div className="input-group">
-                    <input className="input" id="myLocation" type="text" required></input>
-                    <label id="city">PLZ/Ort</label>
-                </div>
+                <Input id= "myName" placeholder="Name *" style={{width: 100 + '%'}}responsive
+                onChange={(value)=>{
+                    this.myNameValue = value;
+                }}/>
+                <Input id="myUrl" placeholder="Url *" style={{width: 100 + '%'}}responsive
+                onChange={(value)=>{
+                    this.myUrlValue = value;
+                }}/>
+                <Input id="myFacebook" placeholder="Facebook" style={{width: 100 + '%'}}responsive
+                onChange={(value)=>{
+                    this.myFacebookValue = value;
+                }}/>
+                <Input id="myAdress" placeholder="Straße/Hr." style={{width: 100 + '%'}}responsive
+                onChange={(value)=>{
+                    this.myAdressValue = value;
+                }}/>
+                <Input id="myLocation" placeholder="PLZ/Ort" style={{width: 100 + '%'}}responsive
+                onChange={(value)=>{
+                    this.myLocationValue = value;
+                }}/>
                 <div style={{textAlign: 'center', marginTop: 10 +'px'}}>
-                    <button className="button" id= "sendNow">Site hinzufügen</button>
+                    <Button id= "sendNow" onClick={()=>{
+                         if (this.myNameValue !== '' && this.myUrlValue !== '') {
+                            chayns.intercom.sendMessageToPage({  
+                                text:"Neue Site : "+ this.myNameValue +", "+ this.myUrlValue +", "+ this.myFacebookValue +", "+ this.myAdressValue +", "+ this.myLocationValue
+                            });
+                            document.querySelector('#myName').value = '',
+                            document.querySelector('#myUrl').value = '',
+                            document.querySelector('#myFacebook').value = '',
+                            document.querySelector('#myAdress').value = '',
+                            document.querySelector('#myLocation').value = '',
+                            this.myNameValue = '',
+                            this.myUrlValue = '',
+                            this.myFacebookValue = '',
+                            this.myAdressValue = '',
+                            this.myLocationValue = ''
+
+                        } else {
+                            chayns.dialog.alert('Fehler', 'Bitte fülle die Plichtfelder aus.');
+                        } 
+                    }}
+                    >Site hinzufügen</Button>
                 </div>
             </div>
         );
