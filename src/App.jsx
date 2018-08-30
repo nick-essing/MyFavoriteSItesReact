@@ -4,8 +4,8 @@ import Content from './components/Content';
 
 const App = () => (
     <div>
-        <Intro/>
-        <Content/>
+        <Intro />
+        <Content />
     </div>
 );
 
