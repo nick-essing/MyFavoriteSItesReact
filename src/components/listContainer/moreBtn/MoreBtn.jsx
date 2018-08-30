@@ -8,7 +8,7 @@ export default class MoreBtn extends React.Component {
         return(
             <div className='right' style={{textAlign: 'right', margin: 10 + 'px ' + 10 + 'px ' + 5 + 'px ' + 0}}>
                 <a href='#' id='right' onClick={()=>{
-                    //
+                    this.props.callback();
                 }}>Mehr anzeigen</a>             
             </div>
         );
