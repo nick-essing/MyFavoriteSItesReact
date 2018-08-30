@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 const propTypes ={
     tempList: PropTypes.array
 };
-const defaultProps ={
-    tempList: []
-}
 
 class CreateList extends React.Component {
 
