@@ -1,9 +1,9 @@
 import React from 'react';
 import MoreBtn from './moreBtn/MoreBtn';
 import SearchBar from './searchBar/SearchBar';
-import TempList from './tempList/TempList'
+import CreateList from './createList/CreateList'
 import { Accordion } from 'chayns-components';
-import fetchData from '../../utils/getData/fetchData';
+import fetchData from '../../../utils/getData/fetchData';
 
 export default class ListContainer extends React.Component {
     constructor() {
@@ -19,18 +19,20 @@ export default class ListContainer extends React.Component {
     render() {
         return (
             <Accordion head="MyFavoriteSites" defaultOpened className="accordion--fixed" right={<SearchBar callback={(value) => {this.state.tempList=[];this.appendList(value)}}/>}>
-                <TempList tempList={this.state.tempList}/>
+                <CreateList tempList={this.state.tempList}/>
                 <MoreBtn callback={() => this.appendList(this.state.searchString)}/>
             </Accordion>
         );
     }
     appendList = (searchString) => {
-        fetchData("https://chayns1.tobit.com/TappApi/Site/SlitteApp?SearchString=" + searchString + "&Skip="+ this.state.tempList.length +"&Take="+ this.state.count).then((data) => {
-            this.setState({
-                tempList: this.state.tempList.concat(data.Data),
-                searchString
-            });
+        fetchData("https://chayns1.tobit.com/TappApi/Site/SlitteApp?SearchString=" + searchString + "&Skip="+ this.state.tempList.length +"&Take="+ this.state.count).then((data) => {  
+            console.log(this.state.tempList.length);
+        if (data.Data !== null){
+                this.setState({
+                    tempList: this.state.tempList.concat(data.Data),
+                    searchString
+                });
+            }
         });
     } 
 }
-

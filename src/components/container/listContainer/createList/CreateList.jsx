@@ -2,7 +2,7 @@ import React from 'react';
 import './listSyles.scss'
 import ListItem from './ListItem';
 
-export default class TempList extends React.Component {
+export default class CreateList extends React.Component {
 
     render(){
         return (

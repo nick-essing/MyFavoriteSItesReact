@@ -1,6 +1,6 @@
 import React from 'react';
-import Formular from './listContainer/Formular';
-import ListContainer from './listContainer/ListContainer';
+import Formular from './container/Formular';
+import ListContainer from './container/listContainer/ListContainer';
 
 const Content = () => (
     <div className="tapp__content">

@@ -7,7 +7,7 @@ async function init() {
         await chayns.ready;
 
         const tappElement = document.querySelector('.tapp');
-        ReactDOM.render(<App/>, tappElement);
+        ReactDOM.render(<App />, tappElement);
 
     } catch (err) {
         console.warn('no chayns environment found');
