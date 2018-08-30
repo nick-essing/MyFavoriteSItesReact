@@ -1,6 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class MoreBtn extends React.Component {
+const propTypes ={
+    callback: PropTypes.func.isRequired
+};
+
+class MoreBtn extends React.Component {
     constructor() {
         super();
     }
@@ -14,3 +19,7 @@ export default class MoreBtn extends React.Component {
         );
     }
 }
+
+MoreBtn.propTypes = propTypes;
+
+export default MoreBtn;

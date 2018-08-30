@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SearchBar.scss'
 import { Input } from 'chayns-components';
 
+const propTypes ={
+    callback: PropTypes.func.isRequired
+};
 
-export default class SearchBar extends React.Component {
+
+class SearchBar extends React.Component {
     constructor() {
         super();
         this.state={
@@ -29,3 +34,7 @@ export default class SearchBar extends React.Component {
         }, 500);
     }
 }
+
+SearchBar.propTypes = propTypes;
+
+export default SearchBar;
